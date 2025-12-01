@@ -2,16 +2,29 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/* Animación global para la caída y rebote de los libros */
+@keyframes fallBounce {
+  0% { 
+    transform: translate(var(--tx), -800px) rotate(var(--rot)); 
+    opacity: 0; 
+  }
+  60% { 
+    transform: translate(var(--tx), 0px) rotate(var(--rot)); 
+    opacity: 1; 
+  }
+  75% { 
+    transform: translate(var(--tx), -30px) rotate(var(--rot)); /* Rebote hacia arriba */
+  } 
+  100% { 
+    transform: translate(var(--tx), 0px) rotate(var(--rot)); /* Asentamiento final */
+  }
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
 }
